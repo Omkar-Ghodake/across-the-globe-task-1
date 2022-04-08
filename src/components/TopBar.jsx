@@ -1,16 +1,14 @@
-import React, { useState } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import React, { useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
 import userPp from './images/user-pp.jpg'
+import { LocationContext } from '../context/LocationState'
 
 const TopBar = () => {
 
-	const location = useLocation()
-	const navigate = useNavigate()
+	const contextLocation = useContext(LocationContext)
+	const { path, setPath, loggedIn, setLoggedIn } = contextLocation
 
-	const [path, setPath] = useState(location.pathname)
-	const [loggedIn, setLoggedIn] = useState(
-		path === '/' ? false : true
-	)
+	const navigate = useNavigate()
 
 	const handleSwitchRoute = () => {
 		if (path === '/') {
@@ -26,9 +24,9 @@ const TopBar = () => {
 
 	return (
 		<>
-			<div className="top-bar row py-4 p-3 w-100 align-items-center m-0">
-				<div className="col-md-3">
-					<h4 className='d-flex align-items-center m-0'>
+			<div className="top-bar row py-3 p-3 w-100 align-items-center m-0">
+				<div className="col-md-3 px-5">
+					<h3 className='d-flex align-items-center m-0'>
 						<span className='text-success'>ATG.</span>
 						W
 						<svg width="25" height="20" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -41,7 +39,7 @@ const TopBar = () => {
 							</defs>
 						</svg>
 						RLD
-					</h4>
+					</h3>
 				</div>
 				<div className="col-md-6">
 					<div className="search-box rounded-pill d-flex align-items-center w-50 mx-auto">
@@ -49,25 +47,23 @@ const TopBar = () => {
 						<input type="search" className="form-control border-0 rounded-pill" placeholder="Search for your favourite groups in ATG" aria-label="Search" aria-describedby="search-addon" />
 					</div>
 				</div>
-				<div className="account-section col-md-3">
+				<div className="account-section col-md-3 d-flex">
 					{!loggedIn && 'Create account.'}
 					<span className='text-primary dropdown'>
 						{
 							loggedIn === false ?
-								<span className="dropdown-toggle m-0 d-flex align-items-center" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-									It's free!
+								<span className="dropdown-toggle m-0 d-flex align-items-center text-dark" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+									&nbsp;<span className='text-primary'>It's free!</span>
 								</span> :
-								<span className="dropdown-toggle m-0 d-flex align-items-center" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+								<span className="dropdown-toggle m-0 d-flex align-items-center text-dark" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
 									<img src={userPp} alt="" height='30rem' className='rounded-circle mx-2' />
 									<p className='m-0 mx-2'>Siddharth Goyal</p>
 								</span>
 						}
 						<ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 							<li>
-								<p className="dropdown-item m-0 cursor-pointer" onClick={handleSwitchRoute}>
-									{`Switch to Logged 
-									${path === '/' ? 'in' : 'out'}
-									state`}
+								<p className="dropdown-item m-0 cursor-pointer">
+									
 								</p>
 							</li>
 						</ul>

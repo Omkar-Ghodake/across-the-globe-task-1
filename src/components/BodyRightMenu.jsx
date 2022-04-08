@@ -1,6 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import groups from './RecommendedGroupsData'
+import { Link } from 'react-router-dom'
+import { LocationContext } from '../context/LocationState'
 
 const BodyRightMenu = () => {
+
+	const contextLocation = useContext(LocationContext)
+	const { loggedIn } = contextLocation
 
 	const [readOnly, setReadOnly] = useState(true)
 
@@ -28,23 +34,52 @@ const BodyRightMenu = () => {
 
 	return (
 		<>
-			<div className="location d-flex align-items-center mx-auto">
-				<div className='mx-auto location-section'>
-					<i className="fa-solid fa-location-dot mx-1"></i>
-					<input
-						type="text"
-						className="border-0 location-input mx-1"
-						placeholder="Enter your location"
+			<div className="body-right-menu container">
 
-						readOnly={readOnly}
-					/>
-					{readOnly && <i className="fa-solid fa-pen cursor-pointer" onClick={toggleReadOnly}></i>}
-					{!readOnly && <i className="fa-solid fa-xmark cursor-pointer" onClick={handleClearClick}></i>}
-					<div className="location-notice mt-4 row">
-						<i className="col-1 fa-solid fa-circle-exclamation mt-1"></i>
-						<p className='col-11'>Your location will help us serve better and extend a personalised experience.</p>
+				<div className="location d-flex align-items-center mx-auto">
+					<div className='mx-auto location-section'>
+						<i className="fa-solid fa-location-dot mx-1"></i>
+						<input
+							type="text"
+							className="border-0 location-input mx-1"
+							placeholder="Enter your location"
+
+							readOnly={readOnly}
+						/>
+						{readOnly && <i className="fa-solid fa-pen cursor-pointer" onClick={toggleReadOnly}></i>}
+						{!readOnly && <i className="fa-solid fa-xmark cursor-pointer" onClick={handleClearClick}></i>}
+						<div className="location-notice mt-4 row">
+							<i className="col-1 fa-solid fa-circle-exclamation mt-1"></i>
+							<p className='col-11'>Your location will help us serve better and extend a personalised experience.</p>
+						</div>
 					</div>
 				</div>
+
+				{loggedIn && <div>
+					<div className="recommended-groups mt-5">
+						<h6 className='mb-4'><i className="fa-solid fa-thumbs-up"></i> RECOMMENDED GROUPS</h6>
+						{
+							groups.map((group, index) => {
+								return <div key={index} className="row mb-4">
+									<div className="col-3 d-flex align-items-center">
+										<img src={group.imgSrc} alt="" className="rounded-circle" />
+									</div>
+									<div className="col-6 d-flex align-items-center">
+										{group.name}
+									</div>
+									<div className="col-3 d-flex align-items-center">
+										<button className='rounded-pill follow-btn px-2'>Follow</button>
+									</div>
+								</div>
+							})
+						}
+					</div>
+
+					<div className="text-end">
+						<Link to="">see more...</Link>
+					</div>
+				</div>
+				}
 			</div>
 		</>
 	)

@@ -20,7 +20,7 @@
 .BodyNav {
 	background-color: #fff;
 	position: sticky;
-	top: 77.97px;
+	top: 65.58px;
 	height: 70px;
 	z-index: 2000;
 }
@@ -63,6 +63,10 @@ a {
 	background: #2F6CE5;
 	color: #fff;
 }
+.leave-group-btn {
+	border: 0.8px solid #989899;
+	color: #6A6A6B;
+}
 
 .red {
 	color: #E56135;
@@ -92,9 +96,9 @@ a {
 	height: 2rem !important;
 }
 
-.location {
+.body-right-menu {
 	position: sticky;
-	top: 180px !important;
+	top: 135px !important;
 	z-index: 9999;
 }
 
@@ -107,6 +111,13 @@ a {
 
 .location-notice {
 	color: #8A8A8A;
+	font-size: small;
+}
+
+.follow-btn {
+	outline: none;
+	border: none;
+	background-color: #EDEEF0;
 	font-size: small;
 }
 
