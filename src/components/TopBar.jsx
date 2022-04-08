@@ -2,6 +2,9 @@ import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import userPp from './images/user-pp.jpg'
 import { LocationContext } from '../context/LocationState'
+import CreateUserModal from './CreateUserModal'
+import LoginModal from './LoginModal'
+
 
 const TopBar = () => {
 
@@ -62,16 +65,33 @@ const TopBar = () => {
 						}
 						<ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 							<li>
-								<p className="dropdown-item m-0 cursor-pointer">
-									
-								</p>
+								{loggedIn === false ?
+									<p className="dropdown-item m-0 cursor-pointer" data-bs-toggle="modal" data-bs-target="#createUserModal">
+										Sign Up
+									</p> :
+									<p className="dropdown-item m-0 cursor-pointer" onClick={handleSwitchRoute}>
+										Log Out
+									</p>
+								}
+								{!loggedIn && <p className="dropdown-item m-0 cursor-pointer" data-bs-toggle="modal" data-bs-target="#loginModal">
+									Log In
+								</p>}
 							</li>
 						</ul>
 					</span>
 				</div>
 			</div>
+
+			<CreateUserModal />
+			<LoginModal />
 		</>
 	)
 }
+
+<div className="row modal-head">
+	<div className="col-12">
+		<p className="m-0 p-3">Let's learn, share & inspire each other with our passion for computer engineering. Sign up now 🤘</p>
+	</div>
+</div>
 
 export default TopBar

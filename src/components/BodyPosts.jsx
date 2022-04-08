@@ -7,12 +7,12 @@ const BodyPosts = (props) => {
 
 	return (
 		<>
-			<div className="card mb-3">
+			<div className="card mb-4">
 				{imgSrc && <div className="card-img-top">
 					<img src={imgSrc} alt="" className='w-100' />
 				</div>}
 				<div className="card-body">
-					<div className="row mb-2">
+					<div className="row mb-4">
 						<div className="col-12">
 							{category}
 						</div>
@@ -31,7 +31,7 @@ const BodyPosts = (props) => {
 								</div>
 							</div>
 						</div>
-						{(date || company || location) && <div className="row mb-2">
+						{(date || company || location) && <div className="row mb-4">
 							{date && <div className="col-3">
 								<i className="fa-solid fa-calendar-day"></i><span className='ms-2'>{date}</span>
 							</div>}
@@ -45,17 +45,17 @@ const BodyPosts = (props) => {
 
 							</div>
 						</div>}
-						{desc && <div className="row mb-2">
+						{desc && <div className="row mb-4">
 							<div className="col-12">
 								<p>{desc}</p>
 							</div>
 						</div>}
-						{website && <div className="row mb-2">
+						{website && <div className="row mb-4">
 							<div className="col-12">
 								<button className={`btn border w-100 ${website.color}`}>{website.text}</button>
 							</div>
 						</div>}
-						<div className="row d-flex align-items-center mb-2">
+						<div className="row d-flex align-items-center">
 							<div className="col-1 border rounded-circle">
 								<img src={profilePic} alt="" className='rounded-circle' height='40px' />
 							</div>

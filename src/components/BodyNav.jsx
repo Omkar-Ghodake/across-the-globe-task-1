@@ -33,7 +33,7 @@ const BodyNav = () => {
 						<Link to="/" className="nav-link">Education</Link>
 						<Link to="/" className="nav-link">Job</Link>
 					</div>
-					<div className="col-md-4 d-flex justify-content-end">
+					<div className="col-md-4 d-flex justify-content-between">
 						<button className="btn write-post-btn btn-sm d-flex px-2 mx-2">
 							Write a Post <i className="fa-solid fa-sort-down ms-3"></i>
 						</button>
@@ -41,7 +41,7 @@ const BodyNav = () => {
 							{
 								loggedIn === false ?
 									<span>Join<i className="fa-solid fa-user-plus me-2"></i></span> :
-									<span><i class="fa-solid fa-arrow-right-from-bracket me-2"></i>Leave</span>
+									<span><i className="fa-solid fa-arrow-right-from-bracket me-2"></i>Leave</span>
 							} Group
 						</button>
 					</div>

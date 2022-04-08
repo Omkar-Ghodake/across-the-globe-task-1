@@ -9,6 +9,19 @@ const BodyRightMenu = () => {
 	const { loggedIn } = contextLocation
 
 	const [readOnly, setReadOnly] = useState(true)
+	const [newGrpArray, setNewGrpArray] = useState(groups)
+
+	const handleFollowClick = (index) => {
+		let tempArray = [...newGrpArray]
+		let tempObj = {...tempArray[index]}
+		if (tempObj.followed) {
+			tempObj.followed = false
+		} else {
+			tempObj.followed = true
+		}
+		tempArray[index] = tempObj
+		setNewGrpArray(tempArray)
+	}
 
 	const handleClearClick = () => {
 		document.body.querySelector('.location-input').value = null
@@ -59,7 +72,7 @@ const BodyRightMenu = () => {
 					<div className="recommended-groups mt-5">
 						<h6 className='mb-4'><i className="fa-solid fa-thumbs-up"></i> RECOMMENDED GROUPS</h6>
 						{
-							groups.map((group, index) => {
+							newGrpArray.map((group, index) => {
 								return <div key={index} className="row mb-4">
 									<div className="col-3 d-flex align-items-center">
 										<img src={group.imgSrc} alt="" className="rounded-circle" />
@@ -68,7 +81,8 @@ const BodyRightMenu = () => {
 										{group.name}
 									</div>
 									<div className="col-3 d-flex align-items-center">
-										<button className='rounded-pill follow-btn px-2'>Follow</button>
+										{!newGrpArray[index].followed && <button className='rounded-pill follow-btn px-2' onClick={() => {handleFollowClick(index)}}>Follow</button>}
+										{newGrpArray[index].followed && <button className='rounded-pill bg-dark text-light follow-btn px-2' onClick={() => {handleFollowClick(index)}}>Followed</button>}
 									</div>
 								</div>
 							})
