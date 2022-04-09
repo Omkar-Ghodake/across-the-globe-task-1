@@ -50,7 +50,7 @@ const CreateUserModal = () => {
 									</div>
 								</div>
 								<div className="col-6 row-height-adjust text-center">
-									<img src={createAcImg} alt="" height='330rem' />
+									<img src={createAcImg} className='modalImg' alt="" height='330rem' />
 									<p className="m-0" style={{ fontSize: '11px' }}>
 										By signing up, you agree to our Terms & conditions, Privacy Policy
 									</p>

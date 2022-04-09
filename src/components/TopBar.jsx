@@ -81,7 +81,6 @@ const TopBar = () => {
 					</span>
 				</div>
 			</div>
-
 			<CreateUserModal />
 			<LoginModal />
 		</>

@@ -7,10 +7,10 @@ import data from './PostData'
 const Body = () => {
 	return (
 		<>
-			<div className="container mt-5">
+			<div className="container body-container mt-sm-5">
 				<BodyNav />
-				<div className="row w-100 mt-3">
-					<div className="col-md-8 px-4">
+				<div className="row w-100 mt-sm-3">
+					<div className="col-md-8 posts-col px-sm-4">
 						{
 							data.map((post, index) => {
 								return <BodyPosts
